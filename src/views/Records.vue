@@ -62,8 +62,8 @@ export default {
                 this.total=res.total;
                 console.log(this.total);
                 if(this.total!==0){
+                    console.log(res);
                     this.records=res.ret;
-                    this.page=Math.floor(this.total/10);
                 }else{
                     Message.info('暂无数据，请使用计算器！')
                 }
