@@ -10,7 +10,7 @@ const URL={
 
 export default {
     getResult(expression){
-        return request(URL.RESULT,'POST',expression);
+        return request(URL.RESULT,'POST',{expression});
     },
     createRecord({username,expression,result}){
         return request(URL.CREATE_RECORD,'POST',{username,expression,result});

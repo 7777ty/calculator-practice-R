@@ -4,11 +4,11 @@
             <div class="title">登录页</div>
             <div class="username">
                 <span>帐号：</span>
-                <el-input v-model="username" placeholder="请输入帐号" clearable></el-input>
+                <el-input v-model.trim="username" placeholder="请输入帐号" clearable></el-input>
             </div>
             <div class="password">
                 <span>密码：</span>
-                <el-input v-model="password" placeholder="请输入密码" clearable show-password></el-input>
+                <el-input v-model.trim="password" placeholder="请输入密码" clearable show-password></el-input>
             </div>
             <el-button type="success" @click="toLogin(username,password)">登陆帐号</el-button>
             <div class="toSignUp"><router-link to="/sign-up">还没有帐号？点击注册</router-link></div>

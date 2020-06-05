@@ -18,7 +18,6 @@
 <script>
     import calculator from "../api/calculator";
     import {Message} from "element-ui";
-    import toRPlish from "../helper/toRPolish";
 
     const numberString='0123456789';
     const operatorString='+-*/%';
@@ -75,12 +74,14 @@ export default {
         },
         onComputed:function () {
             if(this.currentOutput==='0'){return}
-            this.suffixExpression=toRPlish(this.currentOutput);
-             const username=this.$route.params.username;
+            console.log(this.currentOutput);
+            const username=this.$route.params.username;
              const recordID=this.$route.params.recordID;
              const expression=this.currentOutput.valueOf();
-            calculator.getResult(this.suffixExpression).then((res,rej)=>{
+            calculator.getResult(this.currentOutput).then((res,rej)=>{
                 if(res){
+                    console.log(1111);
+                    console.log(res);
                     this.historyInput=this.currentOutput;
                     this.result=res.result;
                     this.currentOutput=this.result.toString();
@@ -127,8 +128,8 @@ export default {
     },
     created() {
             calculator.getRecordDetails(this.$route.params.recordID).then((res,rej)=>{
-                console.log(res.ret[0]);
                 if(res.ret[0]){
+                    console.log(res);
                     this.historyInput=res.ret[0].express;
                     this.currentOutput=res.ret[0].result;
                 }

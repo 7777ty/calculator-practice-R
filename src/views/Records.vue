@@ -25,7 +25,7 @@
                     <td>{{new Date(record.updateAt).toLocaleDateString()}}</td>
                     <td>
                         <el-button type="primary" @click="updateRecord(record.id)">再次计算</el-button>
-                        <el-button type="danger"  @click="deleteRecord(record.id)">删除记录</el-button>
+                        <el-button type="danger"  @click="deleteRecord(record.id,page)">删除记录</el-button>
                     </td>
                 </tr>
                 </tbody>
@@ -75,13 +75,13 @@ export default {
             calculator.getRecords(username,newPage).then((res,rej)=>{
                 this.records=res.ret;
                 this.total=res.total;
-                this.page=Math.floor(this.total/10);
+                this.page=newPage;
             });
         },
         logout(){
             this.$router.replace('/')
         },
-        deleteRecord(recordID){
+        deleteRecord(recordID,page){
             this.$confirm('此操作将永久删除该记录, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
@@ -99,7 +99,7 @@ export default {
                             message: `${rej.msg}`
                         });
                     }
-                    this.$router.go(0)
+                    this.onPageChange(page);
                 });
             }).catch(() => {
                 this.$message({
@@ -117,8 +117,8 @@ export default {
     },
     created() {
         this.getRecords();
-
     },
+
 
 }
 </script>

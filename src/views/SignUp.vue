@@ -4,11 +4,11 @@
             <div class="title">注册页</div>
             <div class="username">
                 <span>帐号：</span>
-                <el-input v-model="username" placeholder="请输入帐号"  maxlength="10" clearable show-word-limit></el-input>
+                <el-input v-model.trim="username" placeholder="请输入帐号"  maxlength="10" clearable show-word-limit></el-input>
             </div>
             <div class="password">
                 <span>密码：</span>
-                <el-input v-model="password" placeholder="请输入密码" maxlength="16" clearable show-password show-word-limit></el-input>
+                <el-input v-model.trim="password" placeholder="请输入密码" maxlength="16" clearable show-password show-word-limit></el-input>
             </div>
             <div>
                 <el-button type="success" @click="toSignUp(username,password)">注册帐号</el-button>
